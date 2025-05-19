@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Week Progress</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" x-data="progressApp()">
+        <div class="progress-container">
+            <h1>Work Week Progress</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" x-bind:style="{ width: progress + '%' }"></div>
+            </div>
+            <div class="progress-text">
+                <span x-text="progress.toFixed(2) + '%'" class="percentage"></span> completed
+            </div>
+            <div class="time-info">
+                <p>Current time: <span x-text="currentTimeFormatted" class="time-highlight"></span></p>
+                <p>Work week: <span class="work-period">Monday-Friday, 9am-6pm</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
