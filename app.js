@@ -43,9 +43,13 @@ function progressApp() {
                 return 0;
             }
             
+            // Calculate completed full days
+            const completedDays = day - 1; // Days before today
+            const completedHoursFromPreviousDays = completedDays * 9;
+            
             if (hour < 9) {
-                // Before work hours
-                return 0;
+                // Before work hours, but count previous days
+                return (completedHoursFromPreviousDays / 45) * 100;
             }
             
             if (hour >= 18) {
@@ -55,7 +59,7 @@ function progressApp() {
                     return 100;
                 } else {
                     // Work day complete but work week not yet
-                    return (day * 9) / 45 * 100;
+                    return ((completedDays + 1) * 9) / 45 * 100;
                 }
             }
             
@@ -64,7 +68,7 @@ function progressApp() {
             const currentDayHours = (hour - 9) + (minute / 60) + (second / 3600);
             
             // Calculate completed hours in work week so far
-            const completedHours = ((day - 1) * 9) + currentDayHours;
+            const completedHours = completedHoursFromPreviousDays + currentDayHours;
             
             // Calculate progress percentage
             return (completedHours / 45) * 100;
