@@ -1,6 +1,7 @@
 # Work Week Progress Tracker
 
 A simple website that shows the progress of work time throughout the week, using Alpine.js.
+
 Available at https://ron-aharoni.github.io/week-progress/.
 
 ## Features
